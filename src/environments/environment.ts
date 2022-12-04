@@ -3,7 +3,14 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  credentials: () => {
+    return credentials;
+  },
+};
+
+export const credentials = {
+  BASE_URL: 'https://catfact.ninja/',
 };
 
 /*
