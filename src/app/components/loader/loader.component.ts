@@ -15,16 +15,12 @@ export class LoaderComponent implements OnInit {
   ngOnInit(): void {}
 
   show() {
-    clearInterval(this.clearTimer);
     this.hiderLoader = false;
-    this.index++;
   }
 
   hide() {
-    this.hiderLoader = true;
-    this.clearTimer = setTimeout(() => {
+    setTimeout(() => {
       this.hiderLoader = true;
-      clearInterval(this.clearTimer);
-    }, 50);
+    }, 5000);
   }
 }

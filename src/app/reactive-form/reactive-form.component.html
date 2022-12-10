@@ -1,0 +1,78 @@
+<form
+  [formGroup]="user"
+  (ngSubmit)="onSubmit()"
+  style="display: grdi; overflow: auto; height: 50vh !important; padding: 50px"
+>
+  <div style="display: grid">
+    <div>
+      <mat-form-field appearance="outline">
+        <mat-label>Name</mat-label>
+        <input formControlName="name" matInput />
+      </mat-form-field>
+    </div>
+
+    <div formGroupName="address" class="address">
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>City</mat-label>
+          <input formControlName="city" matInput />
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Pincode</mat-label>
+          <input formControlName="pincode" matInput />
+        </mat-form-field>
+      </div>
+      <div>
+        <mat-form-field appearance="outline">
+          <mat-label>Street</mat-label>
+          <input formControlName="street" matInput />
+        </mat-form-field>
+      </div>
+    </div>
+    <div style="margin-top: 10px">
+      <button (click)="onAddNewEmailField()" mat-raised-button>
+        Add Full Name
+      </button>
+
+      <ng-container
+        formArrayName="fullName"
+        *ngFor="let fn of getUserFullNameArray.controls; let i = index"
+      >
+        <div
+          [formGroupName]="i"
+          style="display: flex; width: 100%; row-gap: 2px; margin-top: 10px"
+        >
+          <div>
+            <mat-form-field appearance="outline">
+              <mat-label>First Name</mat-label>
+              <input formControlName="firstName" matInput />
+            </mat-form-field>
+          </div>
+
+          <div>
+            <mat-form-field appearance="outline" style="margin-left: 10px">
+              <mat-label>Last Name</mat-label>
+              <input formControlName="lastName" matInput />
+            </mat-form-field>
+          </div>
+        </div>
+        <div>
+          <button (click)="onRemoveControl(i)" mat-raised-button color="accent">
+            Remove
+          </button>
+        </div>
+      </ng-container>
+    </div>
+  </div>
+
+  <button
+    type="submit"
+    style="margin-top: 20px"
+    mat-raised-button
+    color="primary"
+  >
+    submit
+  </button>
+</form>
