@@ -6,6 +6,7 @@ import {
   FormGroup,
   Validators,
 } from '@angular/forms';
+import { SingletonService } from 'src/services/singleton.service';
 
 @Component({
   selector: 'app-reactive-form',
@@ -19,7 +20,7 @@ export class ReactiveFormComponent implements OnInit {
     return this.user.get('fullName') as FormArray;
   }
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder, private ss: SingletonService) {}
   ngOnInit(): void {
     this.user = this.fb.group({
       name: [''],
@@ -32,9 +33,7 @@ export class ReactiveFormComponent implements OnInit {
     });
   }
 
-  onSubmit() {
-    console.log(this.user.value);
-  }
+  onSubmit() {}
 
   onAddNewEmailField() {
     this.getUserFullNameArray.push(

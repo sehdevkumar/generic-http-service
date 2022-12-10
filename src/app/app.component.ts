@@ -42,6 +42,17 @@ export class AppComponent implements OnInit, AfterViewInit {
     // this.ofRxjs();
     // this.intervalRxjs();
     // this.callAllSubjectsExamples();
+    // this.subscribeNestedObservale();
+  }
+
+  subscribeNestedObservale() {
+    this.ss.firstSubject?.subscribe((rand1: any) => {
+      this.ss.secondSubject?.pipe(first()).subscribe((rand2: any) => {
+        this.ss.thirdSubject?.pipe(first()).subscribe((rand3: any) => {
+          console.log(rand1, rand2, rand3);
+        });
+      });
+    });
   }
 
   callAllSubjectsExamples() {
